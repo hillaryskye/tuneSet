@@ -5,6 +5,22 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
+    {{#if user}}
+      <p>
+        Hello {{user.displayName}}
+        |
+        <a href="/logout">Logout</a>
+      </p>
+    {{else}}
+      <p>
+        <a href="/auth/facebook">Login</a>
+      </p>
+    {{/if}}
+
+    {{#if profile}}
+      Profile Picture<img src="{{profile.pictureUrl}}">
+    {{/if}}
+
     {{{body}}}
   </body>
 </html>

@@ -1,2 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
 <h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+<h2>Welcome to tuneSet</h2>
+<form class="" action="/" method="post">
+  <label for="name" id='name'>
+    <input type="text" name="name" id='name'>Type name of first tune
+  </label>
+  <input type="submit">
+</form>
+<h4 id='tune-id'>
+</h4>
+
+{{#tunes}}
+  <p>
+    {{id}}
+    {{name}}
+    {{type}}
+    {{key}}
+    {{abc}}
+  </p>
+{{/tunes}}
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.4&appId=1619392258344342";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+
+<!-- <div class="fb-login-button" data-max-rows="1" data-size="large" data-show-faces="false" data-auto-logout-link="false">
+</div> -->
+<script type="text/javascript" src='public/client.js'></script>
+  </body>
+</html>

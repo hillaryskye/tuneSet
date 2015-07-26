@@ -1,0 +1,35 @@
+<h3>Please type in your first tune and this app will give you keys to choose from for choosing your 2nd and 3rd tunes!</h3>
+<main>
+<section id='tunes'>
+  {{#tunesSess}}
+    <p>
+      Key:
+      <p>{{settings.key}}</p>
+      <p>{{aliases}}</p>
+
+      <p>{{name}}</p>
+      <p>{{type}}</p>
+      <p>{{id}}
+      <p>{{key}}</p>
+      <p>{{abc}}</p>
+
+  {{/tunesSess}}
+  {{#tunesSessKey}}
+    <p>{{key}}</p>
+    <p>{{aliases}}</p>
+    <p>{{settings.key}}</p>
+    <p>{{abc}}</p>
+
+  {{/tunesSessKey}}
+  The tunes from my database:
+  {{#tunes}}
+    <p>
+      <p>{{name}}</p>
+      <p>{{type}}</p>
+      <p>{{id}}
+      <p>{{key}}</p>
+      <p>{{abc}}</p>
+    </p>
+  {{/tunes}}
+</section>
+</main>

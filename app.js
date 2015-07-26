@@ -4,21 +4,58 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var passport = require('passport')
-var cookieSession = require('cookie-session');
-var LinkedInStrategy = require('passport-linkedin-oauth2').Strategy;
 require('dotenv').load()
+var session = require('express-session');
+var passport = require('passport');
+var FacebookStrategy = require('passport-facebook').Strategy;
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var client = require('./public/javascripts/client');
+var unirest = require('unirest');
+
+// Passport session setup.
+//   To support persistent login sessions, Passport needs to be able to
+//   serialize users into and deserialize users out of the session.  Typically,
+//   this will be as simple as storing the user ID when serializing, and finding
+//   the user by ID when deserializing.  However, since this example does not
+//   have a database of user records, the complete Facebook profile is serialized
+//   and deserialized.
+passport.serializeUser(function(user, done) {
+  done(null, user);
+});
+
+passport.deserializeUser(function(obj, done) {
+  done(null, obj);
+});
+
+
+// Use the FacebookStrategy within Passport.
+//   Strategies in Passport require a `verify` function, which accept
+//   credentials (in this case, an accessToken, refreshToken, and Facebook
+//   profile), and invoke a callback with a user object.
+passport.use(new FacebookStrategy({
+    clientID: process.env.FACEBOOK_APP_ID,
+    clientSecret: process.env.FACEBOOK_APP_SECRET,
+    callbackURL: process.env.HOST + '/auth/facebook/callback'
+  },
+  function(accessToken, refreshToken, profile, done) {
+    // console.log(profile)
+    done(null, {id: profile.id, displayName: profile.displayName, token: accessToken, profileURL: profile.profileUrl})
+    // asynchronous verification, for effect...
+    process.nextTick(function () {
+
+      // To keep the example simple, the user's Facebook profile is returned to
+      // represent the logged-in user.  In a typical application, you would want
+      // to associate the Facebook account with a user record in your database,
+      // and return that user instead.
+      return done(null, {id: profile.id, displayName: profile.displayName, token: accessToken, profileURL: profile.profileUrl});
+    });
+  }
+));
 
 var app = express();
 
 app.set('trust proxy', 1)
-
-app.use(cookieSession({
-  name: 'session',
-  keys: ['key1', 'key2']
-}))
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -31,54 +68,83 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(session({secret: 'foo bar', resave: true, saveUninitialized: false}));
 app.use(passport.initialize());
 app.use(passport.session());
 
-passport.use(new LinkedInStrategy({
-  clientID: process.env.LINKEDIN_CLIENT_ID,
-  clientSecret: process.env.LINKEDIN_CLIENT_SECRET,
-  callbackURL: process.env.HOST + "/auth/linkedin/callback",
-  scope: ['r_emailaddress', 'r_basicprofile'],
-  state: true
-}, function(accessToken, refreshToken, profile, done) {
-   done(null, {id: profile.id, displayName: profile.displayName, token: accessToken})
-  // asynchronous verification, for effect...
-  process.nextTick(function () {
-    // To keep the example simple, the user's LinkedIn profile is returned to
-    // represent the logged-in user. In a typical application, you would want
-    // to associate the LinkedIn account with a user record in your database,
-    // and return that user instead.
-  console.log('accessToken', accessToken)
-    return done(null, {id: profile.id, displayName: profile.displayName});
-  });
-}));
+// app.get('/tunes', function(req, res) {
+//   var TUNE_NAME = 1;
+//     unirest.get('https://thesession.org/tunes/' + TUNE_NAME + '?format=json')
+//     // unirest.get('https://thesession.org/tunes/1?format=json')
+//       .end(function (response) {
+//         console.log(response.body.name);
+//         // console.log('res', response)
+//
+//         res.end('Done')
+//       })
+// })
 
-app.get('/auth/linkedin',
-  passport.authenticate('linkedin'),
+// app.get('/', function(req, res){
+//    if(!req.user){
+//     console.log('no login');
+//   }else{
+//     console.log('si login');
+//   }
+//   res.render('index', { user: req.user });
+// });
+
+app.get('/login', function(req, res){
+  res.render('login', { user: req.user });
+});
+
+// app.get('/logout', function(req, res){
+//   res.render('logout', { user: req.user });
+// });
+
+// GET /auth/facebook
+//   Use passport.authenticate() as route middleware to authenticate the
+//   request.  The first step in Facebook authentication will involve
+//   redirecting the user to facebook.com.  After authorization, Facebook will
+//   redirect the user back to this application at /auth/facebook/callback
+app.get('/auth/facebook',
+  passport.authenticate('facebook'),
   function(req, res){
-    // The request will be redirected to LinkedIn for authentication, so this
+    // The request will be redirected to Facebook for authentication, so this
     // function will not be called.
   });
 
-  app.get('/auth/linkedin/callback', passport.authenticate('linkedin', {
-  successRedirect: '/',
-  failureRedirect: '/login'
-}));
+// GET /auth/facebook/callback
+//   Use passport.authenticate() as route middleware to authenticate the
+//   request.  If authentication fails, the user will be redirected back to the
+//   login page.  Otherwise, the primary route function function will be called,
+//   which, in this example, will redirect the user to the home page.
+app.get('/auth/facebook/callback',
+  passport.authenticate('facebook', {
+    failureRedirect: '/login' }),
+  function(req, res) {
+    res.redirect('/');
+  });
 
-// above app.use('/', routes);...
 passport.serializeUser(function(user, done) {
+  console.log(user);
   done(null, user);
 });
 
-passport.deserializeUser(function(user, done) {
-  done(null, user)
+passport.deserializeUser(function(obj, done) {
+  console.log('obj', obj);
+  done(null, obj);
 });
 
-// right above app.use('/', routes);
 app.use(function (req, res, next) {
   res.locals.user = req.user
   next()
 })
+
+// test authentication
+function ensureAuthenticated(req, res, next) {
+if (req.isAuthenticated()) { return next(); }
+res.redirect('/')
+}
 
 app.use('/', routes);
 app.use('/users', users);
