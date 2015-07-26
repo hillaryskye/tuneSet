@@ -57,12 +57,12 @@ router.post('/', function(req, res, next) {
           key = response.body.settings[0].key
           console.log('res.locals', res.locals)
           console.log('key', response.body.settings[0])
+          res.render('tunes', {tuneSessKey: response.body.settings[0]})
           console.log('happy')
           tunesDb.insert( response.body.settings[0], function (err, doc) {
               if (err) throw err
               console.log('doc from update', doc)
-          res.render('tunes', {tunesSessKey: response.body.settings[0], key: response.body.settings[0].key})
-              // res.render('tunes', doc)
+              res.render('tunes', doc)
             })
         })
       })
@@ -81,20 +81,20 @@ router.post('/', function(req, res, next) {
 
     // var key =
 
-    // router.get('/:id', function(req, res, next) {
-    //   tunesDb.findOne({ _id: req.params.id }, function (err, doc) {
-    //     if (err) throw err
-    //     console.log('req.session', req.body)
-    //     res.render('tunes', doc)
-    // })
-    //   })
-    //
-    //   router.get('/:id/edit', function(req, res, next) {
-    //     tunesDb.findOne({ id: tuneOnly }, function (err, doc) {
-    //     if (err) throw err
-    //     res.render('tunes', doc)
-    //   })
-    // })
+    router.get('/:id', function(req, res, next) {
+      tunesDb.findOne({ _id: req.params.id }, function (err, doc) {
+        if (err) throw err
+        console.log('req.session', req.body)
+        res.render('tunes', doc)
+    })
+      })
+
+      router.get('/:id/edit', function(req, res, next) {
+        tunesDb.findOne({ id: tuneOnly }, function (err, doc) {
+        if (err) throw err
+        res.render('tunes', doc)
+      })
+    })
 
       // router.get('/:id/update', function(req, res, next) {
           //   db.myusers.update(
@@ -111,14 +111,14 @@ router.post('/', function(req, res, next) {
 
 
 
-// router.get('/tunes', function(req, res, next) {
-//   console.log('req.body.name from /tunes', tuneName)
-//   // var TUNE_NAME, req.body to uri
-// })
-//
-// router.post('/tunes', function(req, res, next) {
-//   res.redirect('/')
-// })
+router.get('/tunes', function(req, res, next) {
+  console.log('req.body.name from /tunes', tuneName)
+  // var TUNE_NAME, req.body to uri
+})
+
+router.post('/tunes', function(req, res, next) {
+  res.redirect('/')
+})
 
 // router.post('/tunes', function(req, res, next) {
 //   // var TUNE_NAME, req.body to uri
