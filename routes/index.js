@@ -60,6 +60,24 @@ router.post('/', function(req, res, next) {
         unirest.get(tuneUrlKey)
         .end(function (response) {
           key = response.body.settings[0].key
+
+          // Defining the 'M:' for displaying the meter
+          if (response.body.type == 'jig')
+            { response.body.time = '6/8' }
+          else if (response.body.type == 'waltz')
+            { response.body.time = '3/4' }
+            else if (response.body.type == 'slip-jig')
+              { response.body.time = '9/8' }
+            else if (response.body.type == 'slide')
+              { response.body.time = '12/8' }
+                else if (response.body.type == 'three-two')
+                  { response.body.time = '3/2' }
+                else if (response.body.type == 'polka')
+                  { response.body.time = '2/4' }
+                  else  { response.body.time ='4/4' }
+
+
+            console.log('time', response.body.time)
           console.log('res.locals', res.locals)
           console.log('key', response.body)
           console.log('happy')
