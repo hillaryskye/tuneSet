@@ -77,7 +77,7 @@ router.post('/', function(req, res, next) {
                   else  { response.body.time ='4/4' }
 
 
-            console.log('time', response.body.time)
+          console.log('time', response.body.time)
           console.log('res.locals', res.locals)
           console.log('key', response.body)
           console.log('happy')
