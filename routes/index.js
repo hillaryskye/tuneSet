@@ -4,6 +4,8 @@ var unirest = require('unirest');
 var db = require('monk')(process.env.MONGOLAB_URI);
 var tunesDb = db.get('tunes');
 var qs = require('qs');
+var mime = require('mime');
+
 
 
 
@@ -47,7 +49,7 @@ router.post('/', function(req, res, next) {
         console.log('tuneOnly', tuneOnly.id)
 
         // first render
-        res.render('tunes', { tunesSess: response.body.tunes[0]})
+        // res.render('tunes', { tunesSess: response.body.tunes[0]})
         console.log('id', response.body.tunes.id)
 
       // 2nd unirest call to session.org to get key
@@ -61,9 +63,9 @@ router.post('/', function(req, res, next) {
           tunesDb.insert( response.body.settings[0], function (err, doc) {
               if (err) throw err
               console.log('doc from update', doc)
-          res.render('tunes', {tunesSessKey: response.body.settings[0], key: response.body.settings[0].key})
               // res.render('tunes', doc)
             })
+          res.render('tunes', {tunesSessKey: response.body.settings[0], key: key})
         })
       })
       // store the document in a variable
