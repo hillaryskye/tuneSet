@@ -35,5 +35,3 @@ var tuneId = document.getElementById('tune-id');
   name.addEventListener('click', function(e) {
     tuneId.innerHTML = input.value
   })
-
-{{/tunesSess}}
