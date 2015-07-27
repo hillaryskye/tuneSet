@@ -6,3 +6,13 @@ body {
 a {
   color: #00B7FF;
 }
+p {
+  padding-left: 10px;
+}
+textarea {
+  font-size: 14px;
+}
+.col-half {
+  width: 45%;
+  padding: 5px;
+}

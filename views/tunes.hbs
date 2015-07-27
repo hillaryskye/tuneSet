@@ -8,19 +8,21 @@
 <h3>Please type in your first tune and this app will give you keys to choose from for choosing your 2nd and 3rd tunes!</h3>
 <main>
 <section id='tunes'>
-
+<div class='row'>
+  <div class=col-half>
   {{#tunesSessKey}}
-  <p>{{name}}</p>
-  <p>{{type}}</p>
-  <p>{{id}}
-    <p>key:{{key}}</p>
-    <p>{{aliases}}</p>
-    <p>{{settings.key}}</p>
-    <p>{{abc}}</p>
-
+    <p>TYPE:  {{type}}</p>
+    <p>ID:  {{id}}
+    <p>NAME: {{name}}</p>
+    <p>KEY:  {{settings.key}}</p>
+    <p>ALIASES: {{aliases}}</p>
+    <textarea name="wpTextbox1" id="wpTextbox1" cols="50" rows="10" tabindex="1" accesskey=",">
+      {{settings.abc}}
+    </textarea>
+  </div><!-- End of col-half -->
   {{/tunesSessKey}}
   The tunes from my database:
-  {{#tunes}}
+  {{#tunesDb}}
       <p>{{name}}</p>
       <p>{{type}}</p>
       <p>{{id}}
@@ -29,8 +31,9 @@
         {{abc}}
       </textarea>
     </p>
-  {{/tunes}}
+  {{/tunesDb}}
 </section>
+</div><!-- End of row -->
 </main>
 <!-- <script type="text/javascript" src='https://code.jquery.com/jquery-1.11.3.min.js'></script> -->
 	<!-- use these lines instead to debug the plugin -->
