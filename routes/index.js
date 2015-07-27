@@ -69,7 +69,7 @@ router.post('/', function(req, res, next) {
               console.log('doc from update', doc)
               // res.render('tunes', doc)
             })
-          res.render('tunes', {tunesSessKey: response.body})
+          res.render('tunes', {tunesSessKey: response.body, key: response.body.settings[0].key})
         })
       })
     })

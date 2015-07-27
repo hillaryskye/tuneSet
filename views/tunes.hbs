@@ -14,25 +14,31 @@
     <p>TYPE:  {{type}}</p>
     <p>ID:  {{id}}
     <p>NAME: {{name}}</p>
-    <p>KEY:  {{settings.key}}</p>
     <p>ALIASES: {{aliases}}</p>
     <textarea name="wpTextbox1" id="wpTextbox1" cols="50" rows="10" tabindex="1" accesskey=",">
-      {{settings.abc}}
-    </textarea>
-  </div><!-- End of col-half -->
+    {{#each settings}}
+
+    {{#if @first}}
+        {{key}}
+        {{abc}}
+    {{else}}
+    {{/if}}
+{{/each}}
+      </textarea>
+   </div><!-- End of col-half-- >
   {{/tunesSessKey}}
   The tunes from my database:
-  {{#tunesDb}}
-      <p>{{name}}</p>
+<!--   {{#each tunesDb}}
+ -->  <p>{{name}}</p>
       <p>{{type}}</p>
-      <p>{{id}}
+      <p>{{id}}<p>
       <p>{{key}}</p>
       <textarea name="wpTextbox1" id="wpTextbox1" cols="80" rows="25" tabindex="1" accesskey=",">
         {{abc}}
       </textarea>
-    </p>
-  {{/tunesDb}}
-</section>
+
+<!--   {{/each}}
+ --></section>
 </div><!-- End of row -->
 </main>
 <!-- <script type="text/javascript" src='https://code.jquery.com/jquery-1.11.3.min.js'></script> -->
