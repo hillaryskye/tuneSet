@@ -1,18 +1,103 @@
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
+  border-radius: 5px;
+  background: #000;
+  padding: 5px 15px;
   color: #00B7FF;
 }
 p {
   padding-left: 10px;
 }
+h4 {
+  text-align: center;
+}
 textarea {
   font-size: 14px;
 }
-.col-half {
-  width: 45%;
+.key-selection {
+  float: left;
+  margin: 10px;
+  display: block;
+}
+key-selection:after {
+
+  clear: both;
+  visibility: hidden;
+}
+.one-half {
+/*   border: 2px solid purple;
+text-align: center;
+ */  width: 45%;
   padding: 5px;
+/*   display: inline-block;
+ */  float: left;
+  margin: 5px;
+ }
+ .one-half:after {
+   content: "";
+   display: table;
+   clear: both;
+ }
+.abctext {
+  margin-left: -20px;
+}
+.abcrendered {
+  margin-left: 20px;
+}
+.notation {
+  width: 100%;
+    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: hidden;
+  }
+
+  /* Phones ----------- */
+   @media only screen and (max-width : 767px) {
+      p {
+        font-size: 18px;
+      }
+  }
+
+  /* Tablets ----------- */
+   @media only screen and (min-width : 768px) {
+      /* CSS Styles */
+      p {
+        font-size: 16px;
+      }
+  }
+
+  /* -------- COLUMN LAYOUTS -------*/
+/* -- Column Sizes -- */
+
+.one-fourth   { width:21.25%; }
+.one-third    { width:29.333%; }
+/* .one-half     { width:45.5%; }
+ */.two-third    { width:61.666%; }
+.three-fourth { width:69.75%; }
+.one-column   { width:94%; }
+.full-column  { width:100%; }
+
+/* -- Column Margin & Float-- */
+.one_half,.one_third,.two_third,
+.three_fourth,.one_fourth,.one_column,
+.full_column {
+  margin-left:3%;
+  margin-top:1%;
+  float:left;
+}
+
+/* -- Column Row (aka Clearfix) -- */
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
 }

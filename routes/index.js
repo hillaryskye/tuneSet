@@ -59,7 +59,6 @@ router.post('/', function(req, res, next) {
         var tuneUrlKey = 'https://thesession.org/tunes/' + tuneOnly.id + '?format=json'
         unirest.get(tuneUrlKey)
         .end(function (response) {
-          key = response.body.settings[0].key
 
           // Defining the 'M:' for displaying the meter
           if (response.body.type == 'jig')
@@ -75,11 +74,17 @@ router.post('/', function(req, res, next) {
                 else if (response.body.type == 'polka')
                   { response.body.time = '2/4' }
                   else  { response.body.time ='4/4' }
-
-
+          response.body.id = 'X: ' + response.body.id
+          response.body.name = 'T: ' + response.body.name
+          response.body.history = 'Z: ' + response.body.history
+          response.body.time = 'M: ' + response.body.time
+          showKey = response.body.settings[0].key
+          console.log('showKey', showKey)
+          response.body.length = 'L: 1/8'
+          response.body.type = 'R: ' + response.body.type
+          response.body.settings[0].key = 'K: ' + response.body.settings[0].key
           console.log('time', response.body.time)
           console.log('res.locals', res.locals)
-          console.log('key', response.body)
           console.log('happy')
           console.log('req.params.name', req.params)
           tunesDb.insert( response.body.settings[0], function (err, doc) {
@@ -87,10 +92,19 @@ router.post('/', function(req, res, next) {
               console.log('doc from update', doc)
               // res.render('tunes', doc)
             })
-          res.render('tunes', {tunesSessKey: response.body, key: response.body.settings[0].key})
+          res.render('tunes', {tunesSessKey: response.body})
         })
       })
     })
+})
+
+router.get('/login', function(req, res){
+  res.render('login', { user: req.user });
+});
+
+router.get('/logout', function(req, res, next) {
+  req.logout();
+  res.redirect('/')
 })
 
 router.get('/:id', function(req, res, next) {
@@ -127,10 +141,5 @@ router.get(':/id/add', function(req, res, next) {
       res.redirect('tunes/add')
     })
   })
-
-router.get('/logout', function(req, res, next) {
-  req.logout();
-  res.redirect('/')
-})
 
 module.exports = router;

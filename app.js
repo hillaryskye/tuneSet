@@ -93,10 +93,6 @@ app.use(passport.session());
 //   res.render('index', { user: req.user });
 // });
 
-app.get('/login', function(req, res){
-  res.render('login', { user: req.user });
-});
-
 // app.get('/logout', function(req, res){
 //   res.render('logout', { user: req.user });
 // });
@@ -137,6 +133,7 @@ passport.deserializeUser(function(obj, done) {
 
 app.use(function (req, res, next) {
   res.locals.user = req.user
+  app.locals.pretty = true
   next()
 })
 
