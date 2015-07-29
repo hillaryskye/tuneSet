@@ -11,7 +11,7 @@
   	<script type="text/javascript">
   		window.ABCJS.plugin.render_before = false;
   		window.ABCJS.plugin.midi_options = {program: 41};
-  		window.ABCJS.plugin.debug = true;
+  		// window.ABCJS.plugin.debug = true;
   	</script>
 
   	<style type="text/css">
@@ -25,28 +25,8 @@
 <main>
 <section id='tunes'>
 <div class='row'>
-  <div class='one-half'>
-    <section class='key-selection>'>
-      <h3>Key choices for 2nd and 3rd tunes.  Pick one!</h3>
-      <div class='one-half'>
-        <h4>Major Keys</h4>
-          <a href="">Key of A Maj</a>
-          <a href="">Key of D Maj</a>
-          <a href="">Key of G Maj</a>
-          <a href="">Key of C Maj</a>
-          <a href="">Key of F Maj</a>
-        </div>
-        <div class='one-half'>
-          <h4>Relative Minor keys</h4>
-          <a href="">Key of F# Min</a>
-          <a href="">Key of B Min</a>
-          <a href="">Key of Emin</a>
-          <a href="">Key of A Min</a>
-          <a href="">Key of D Min</a>
-      </div>
-  </section>
-</div><!-- End of 1st column -->
-  <div class=one-half>
+  <a href="/keys">Pick a set</a>
+  <div>
   {{#tunesSessKey}}
      <p>ALIASES: {{aliases}}</p>
     <div class='notation'>
@@ -81,7 +61,7 @@
       </textarea>
 
 <!--   {{/each}}
-</div><!-- End of row -->
+</div><!- End of row -->
 </main>
 </body>
 </html>

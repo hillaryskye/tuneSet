@@ -10,6 +10,9 @@ var passport = require('passport');
 var FacebookStrategy = require('passport-facebook').Strategy;
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var keys = require('./routes/keys');
+var tunes = require('./routes/tunes')
+// var show = require('./routes/show');
 var client = require('./public/javascripts/client');
 var unirest = require('unirest');
 
@@ -139,12 +142,19 @@ app.use(function (req, res, next) {
 
 // test authentication
 function ensureAuthenticated(req, res, next) {
-if (req.isAuthenticated()) { return next(); }
-res.redirect('/')
+  if (req.isAuthenticated()) { return next(); }
+  res.redirect('/')
 }
 
 app.use('/', routes);
 app.use('/users', users);
+app.use('/keys', keys);
+app.use('/tunes', tunes);
+// app.use('/show', show);
+
+// app.use(function(req, res, next) {
+//
+// })
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

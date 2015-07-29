@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+
+  </head>
+  <body>
+      <section class='key-selection>'>
+        <h3>Key choices for 2nd and 3rd tunes.  Pick one!</h3>
+          <form action="/" method='post'>
+            <label for="type" id='type'>Choose a meter</label>
+          <input type="text" name='type' id='type'>
+          <button type='submit'>Submit</button>
+          </form>
+        <section class='show'>
+          <div class='row'>
+
+
+        <div class='one-half'>
+      <h4>Major Keys</h4>
+      <br>
+        <a class='key' href="/keys?key=Amajor">AMaj</a>
+        <a class='key' href="/keys?key=Dmajor">D Maj</a>
+        <a class='key' href="/keys?key=Gmajor">G Maj</a>
+        <a class='key' href="/keys?key=Cmajor">C Maj</a>
+        <a class='key' href="/keys?key=Fmajor">F Maj</a>
+      </div>
+      <div class='one-half'>
+      <h4>Relative Minor keys</h4>
+      <br>
+      <a class='key' href="/keys?key=F#minor">F# Min</a>
+      <a class='key' href="/keys?key=Bminor">B Min</a>
+      <a class='key' href="/keys?key=Eminor">Emin</a>
+      <a class='key' href="/keys?key=Aminor">A Min</a>
+      <a class='key' href="/keys?key=Dminor">D Min</a>
+      </div>
+          </div>
+          <div class='row'>
+            <div class='two-third display'>
+            {{#tuneKeys}}
+              <a class='name' href="/tunes?id={{id}}&name={{name}}">{{name}}{{id}}</a>
+            {{/tuneKeys}}
+          </div>
+
+
+          </div>
+    </section>
+
+
+        </section>
+
+  </body>
+</html>

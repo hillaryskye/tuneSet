@@ -26,7 +26,6 @@ router.get('/', function(req, res, next) {
   });
 });
 
-
 router.post('/', function(req, res, next) {
   console.log('req.body from root', req.body)
   var tuneName = req.body.name // what is entered by user
@@ -41,58 +40,70 @@ router.post('/', function(req, res, next) {
       console.log('response from unirest', response.body.tunes[0])
 
       _id = response.body.tunes[0]
-      console.log('_id', _id)
 
       // Insert tune from user entry to database
       tunesDb.name    = tuneName[0]; // set the tunesdbid
       tunesDb.insert(response.body.tunes[0], function (err, doc) {
-        console.log('req.body.id from tunes.insert', req.body)
         if (err) throw err
         var tuneOnly = doc
-        console.log('tuneOnly', tuneOnly.id)
-
-        // first render
-        // res.render('tunes', { tunesSess: response.body.tunes[0]})
-        console.log('id', response.body.tunes.id)
 
       // 2nd unirest call to session.org to get key
         var tuneUrlKey = 'https://thesession.org/tunes/' + tuneOnly.id + '?format=json'
         unirest.get(tuneUrlKey)
         .end(function (response) {
 
-          // Defining the 'M:' for displaying the meter
-          if (response.body.type == 'jig')
-            { response.body.time = '6/8' }
-          else if (response.body.type == 'waltz')
-            { response.body.time = '3/4' }
-            else if (response.body.type == 'slip-jig')
-              { response.body.time = '9/8' }
-            else if (response.body.type == 'slide')
-              { response.body.time = '12/8' }
-                else if (response.body.type == 'three-two')
-                  { response.body.time = '3/2' }
-                else if (response.body.type == 'polka')
-                  { response.body.time = '2/4' }
-                  else  { response.body.time ='4/4' }
-          response.body.id = 'X: ' + response.body.id
-          response.body.name = 'T: ' + response.body.name
-          response.body.history = 'Z: ' + response.body.history
-          response.body.time = 'M: ' + response.body.time
-          showKey = response.body.settings[0].key
-          console.log('showKey', showKey)
-          response.body.length = 'L: 1/8'
-          response.body.type = 'R: ' + response.body.type
-          response.body.settings[0].key = 'K: ' + response.body.settings[0].key
+            // Defining the 'M:' for displaying the meter
+            if (response.body.type == 'jig')
+              { response.body.time = '6/8' }
+            else if (response.body.type == 'waltz')
+              { response.body.time = '3/4' }
+              else if (response.body.type == 'slip-jig')
+                { response.body.time = '9/8' }
+              else if (response.body.type == 'slide')
+                { response.body.time = '12/8' }
+                  else if (response.body.type == 'three-two')
+                    { response.body.time = '3/2' }
+                  else if (response.body.type == 'polka')
+                    { response.body.time = '2/4' }
+                    else  { response.body.time ='4/4' }
+
+            // Get dynamic fields to include their initial state
+
+            response.body.id = 'X: ' + response.body.id
+            response.body.name = 'T: ' + response.body.name
+            response.body.history = 'Z: ' + response.body.history
+            response.body.time = 'M: ' + response.body.time
+            response.body.length = 'L: 1/8'
+            response.body.type = 'R: ' + response.body.type
+            response.body.settings[0].key = 'K: ' + response.body.settings[0].key
+            response.body.settings[0].abc = response.body.settings[0].abc
+
+            response.body.settings[0].id = response.body.id
+            response.body.settings[0].name = response.body.name
+            response.body.settings[0].history = response.body.history
+            response.body.settings[0].time = response.body.time
+            response.body.settings[0].length = 'L: 1/8'
+            response.body.settings[0].type = response.body.type
+
           console.log('time', response.body.time)
+          console.log('history', response.body.history)
+          console.log('length', response.body.length)
           console.log('res.locals', res.locals)
           console.log('happy')
-          console.log('req.params.name', req.params)
-          tunesDb.insert( response.body.settings[0], function (err, doc) {
+          console.log('req.params', req.params)
+
+          // inserting 2nd request into database
+          tunesDb.insert(response.body.settings[0], function (err, doc) {
               if (err) throw err
               console.log('doc from update', doc)
               // res.render('tunes', doc)
+              res.render('tunes', {tunesSessKey: response.body})
             })
-          res.render('tunes', {tunesSessKey: response.body})
+
+          // redirect to new tunes route
+          // res.redirect('/tunes?' + 'type=' + type)
+          // in the tunes route you can read from the query params
+          // req.query.type
         })
       })
     })
@@ -106,40 +117,5 @@ router.get('/logout', function(req, res, next) {
   req.logout();
   res.redirect('/')
 })
-
-router.get('/:id', function(req, res, next) {
-  tunesDb.findOne({ _id: req.params.id }, function (err, doc) {
-    if (err) throw err
-    console.log('req.session', req.body)
-    res.render('tunes', doc)
-    })
-  })
-
-router.get(':/id/add', function(req, res, next) {
-  console.log('res', res)
-  res.render('tunes', {})
-})
-// This route is where user adds tunes by keys
-  router.get('/:id/edit', function(req, res, next) {
-    tunesDb.findOne({ _id: req.params.id }, function (err, doc) {
-    if (err) throw err
-    res.render('tunes/add', doc)
-  })
-})
-
-  router.post('/:id/delete', function(req, res, next) {
-    tunesDB.remove({ _id: req.params.id }, function (err, docs) {
-      if (err) throw err
-      res.redirect('tunes/add')
-    })
-  })
-
-  router.post('/:id/update', function(req, res, next) {
-    tunesDb.update({ _id: req.params.id }, function (err, doc) {
-      if (err) throw err
-      console.log('doc from update', doc)
-      res.redirect('tunes/add')
-    })
-  })
 
 module.exports = router;

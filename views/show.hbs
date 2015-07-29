@@ -1,9 +1,51 @@
-Tunes from my database:
-<br>
-{{#tunes}}
-  <p>
-    ID:  {{id}}
-    name: {{name}}
-    type: {{type}}
-  </p>
-{{/tunes}}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>tuneSet</title>
+    <!-- use these lines instead to debug the plugin -->
+  	<!-- <script src="bin/abcjs_basic_latest-min.js" type="text/javascript"></script> -->
+  	<!-- <script src="jquery-1.11.3.min.js" type="text/javascript"></script> -->
+  	<!-- <script src="plugin/abc_plugin.js" type="text/javascript"></script> -->
+    <script src="https://cdn.rawgit.com/paulrosen/abcjs/master/bin/abcjs_plugin_2.1-min.js" type="text/javascript"></script>
+  	<script type="text/javascript">
+  		window.ABCJS.plugin.render_before = false;
+  		window.ABCJS.plugin.midi_options = {program: 41};
+  		// window.ABCJS.plugin.debug = true;
+  	</script>
+
+  	<style type="text/css">
+  		.abcrendered {
+  			background-color: #FCF9BB;
+  		}
+  	</style>
+  </head>
+  <body>
+    <h3>Here are your tunes!</h3>
+<h3>Click on a 3 to 5 tunes to create a set!</h3>
+<main>
+<section id='tunes'>
+<div class='row'>
+  <div class=one-half>
+  {{#each tunes}}
+    <div class='notation'>
+ <pre>
+<!--     <a class='name' href="/tunes?id={{id}}&name={{name}}">{{name}}{{id}}</a>      {{name}}
+ -->
+   {{this.name}}
+   {{this.id}}
+<!--   {{this.history}}
+{{this.time}}
+{{this.length}}
+{{this.type}}
+{{this.key}}
+{{this.abc}} -->
+      </pre>
+     </div>
+    </div>
+    {{/each}}
+
+</section>
+</main>
+</body>
+</html>
