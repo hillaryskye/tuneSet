@@ -64,7 +64,7 @@ text-align: center;
         color: #00B7FF;
         margin: 4px;
 }
-  a:link, a:hover {
+  a:visited, a:hover {
     color: white;
     background: green;
   }

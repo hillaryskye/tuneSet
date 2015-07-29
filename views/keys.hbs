@@ -15,7 +15,11 @@
           </form>
         <section class='show'>
           <div class='row'>
-
+            {{#tuneKeys}}
+            {{#settings}}
+              {{key}}
+            {{/settings}}
+            {{/tuneKeys}}
 
         <div class='one-half'>
       <h4>Major Keys</h4>
@@ -27,7 +31,7 @@
         <a class='key' href="/keys?key=Fmajor">F Maj</a>
       </div>
       <div class='one-half'>
-      <h4>Relative Minor keys</h4>
+      <h4>{{key}}Relative Minor keys</h4>
       <br>
       <a class='key' href="/keys?key=F#minor">F# Min</a>
       <a class='key' href="/keys?key=Bminor">B Min</a>
@@ -39,7 +43,8 @@
           <div class='row'>
             <div class='two-third display'>
             {{#tuneKeys}}
-              <a class='name' href="/tunes?id={{id}}&name={{name}}">{{name}}{{id}}</a>
+            {{key}}
+              <a class='name' href="/tunes?id={{id}}&name={{name}}&key={{key}}">{{name}}{{id}}</a>
             {{/tuneKeys}}
           </div>
 

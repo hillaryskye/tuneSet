@@ -3,6 +3,7 @@ var router = express.Router();
 var unirest = require('unirest');
 var db = require('monk')(process.env.MONGOLAB_URI);
 var tunesDb = db.get('tunes');
+var temp = db.get('temp');
 var qs = require('qs');
 var mime = require('mime');
 
@@ -43,9 +44,10 @@ router.post('/', function(req, res, next) {
 
       // Insert tune from user entry to database
       tunesDb.name    = tuneName[0]; // set the tunesdbid
-      tunesDb.insert(response.body.tunes[0], function (err, doc) {
+      temp.insert(response.body.tunes[0], function (err, doc) {
         if (err) throw err
         var tuneOnly = doc
+        console.log('tuneOnly', tuneOnly)
 
       // 2nd unirest call to session.org to get key
         var tuneUrlKey = 'https://thesession.org/tunes/' + tuneOnly.id + '?format=json'
