@@ -15,12 +15,13 @@ nav {
   margin: 0;
 }
 
-nav li {
-  font-size: 20px;
-  float: left;
-  padding: 20px;
-  padding-left: 50px;
-
+nav li, article li {
+  list-style: none;
+/*   font-size: 20px;
+float: left;
+padding: 20px;
+padding-left: 50px;
+ */
 }
 nav li:after {
   content: "";
@@ -63,7 +64,8 @@ text-align: center;
 .one-fourth   { width:21.25%; }
 .one-third    { width:29.333%; }
 /* .one-half     { width:45.5%; }
-*/.two-third    { width:61.666%; }
+*/
+.two-third    { width:61.666%; }
 .three-fourth { width:69.75%; }
 .one-column   { width:94%; }
 .full-column  { width:100%; }

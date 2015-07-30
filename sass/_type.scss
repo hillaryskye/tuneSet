@@ -12,6 +12,7 @@ article a {
   line-height: 1em;
 }
 article {
+  width: 100%;
   display: block;
   float: left;
   height: 25px;
@@ -84,93 +85,17 @@ a {
   transition: 300ms ease all;
 
 }
-.login {
-  margin-top: 20px;
-  margin-left: 40px;
-  color: white;
-  background: #482ACF;
-  color: white;
-  padding: 10px 25px;
-  border-radius: 10px;
-  border: 1px solid #000;
-  transition: 300ms ease all;
-}
 
-/* a {
-  background: #000;
-padding: 5px 25px;  color: #00B7FF;
-} */
-/* a:visited, a:hover {
-  border-bottom: 1px solid #3F7D20;
-  color: #fff;
-  background: #3F7D20;
-}
- */
  h1 {
   font-size: 2em;
   margin: 0.67em 0;
 }
 
-section .key-selection {
-  float: left;
-  margin: 10px;
-  display: block;
-}
-section {
-  margin-left: 45px;
-}
-
-key-selection:after {
-
-  clear: both;
-  visibility: hidden;clear: both;
-  visibility: hidden;
-}
-
-.abctext {
-  font-size: 14px;
-  margin-left: -20px;
-}
-.abcrendered {
-  margin-left: 40px;
-}
-.notation {
-  width: 100%;
-    overflow: hidden;
-    overflow-x: hidden;
-    overflow-y: hidden;
-  }
-  .key {
-    float: left;
-    border-radius: 65px;
-    padding: 7px 20px;
-    background: #24227F;
-    margin: 4px;
-    display: block;
-    font-size: 12px;
-}
-key:after {
-  clear: both;
-  visibility: hidden;
-}
   a:hover {
     color: #fff;
     background: #72B01D;
   }
-.show {
-  padding: 40px;
-}
 
-.display {
-  margin-left: 150px;
-
-}
-.name {
-  margin: 20px;
-  margin-top: 10px;
-  display: block;
-  padding: 10px;
-}
 span {
   color: #482ACF;
 }

@@ -4,24 +4,75 @@
     overflow-x: hidden;
     overflow-y: hidden;
   }
-  .key {
-    border-radius: 65px;
-        background: #000;
-        padding: 7px 20px;
-        color: #00B7FF;
-        margin: 4px;
-}
-
 .show {
   padding: 40px;
+}
+
+.name {
+  font-family: 'Libre Baskerville', serif;
+  font-weight: 400;
+  line-height: 1.45;
+/*   float: left;
+ */  margin: 20px;
+  margin-top: 10px;
+  display: block;
+  padding: 10px;
+}
+.name:after {
+  content: "";
+  display: table;
+  clear: both;
 }
 
 .display {
   margin-left: 150px;
 
 }
-.name {
-  margin: 20px;
+  .key {
+    color: white;
+    float: left;
+    border-radius: 65px;
+    padding: 7px 29px;
+    background: #24227F;
+    margin: 4px;
+    display: block;
+    font-size: 12px;
+}
+key:after {
+  clear: both;
+  visibility: hidden;
+}
+.login {
+  margin-top: 20px;
+  margin-left: 40px;
+  color: white;
+  background: #482ACF;
+  color: white;
+  padding: 10px 25px;
+  border-radius: 10px;
+  border: 1px solid #000;
+  transition: 300ms ease all;
+}
+section .key-selection {
+  float: left;
+  margin: 10px;
   display: block;
-  padding: 10px;
+}
+section {
+  margin-left: 45px;
+}
+
+key-selection:after {
+
+  clear: both;
+  visibility: hidden;clear: both;
+  visibility: hidden;
+}
+
+.abctext {
+  font-size: 14px;
+  margin-left: -20px;
+}
+.abcrendered {
+  margin-left: 40px;
 }

@@ -5,6 +5,8 @@
     <title></title>
 
   </head>
+  <main>
+
   <body>
       <!-- <section class='key-selection>'>
         <h3>Key choices for 2nd and 3rd tunes.  Pick one!</h3>
@@ -15,7 +17,7 @@
           </form> -->
 <!--         <a class='key' href="/keys?type=jig">Jig</a>
  -->
-        <section class='show'>
+        <section>
           <div class='row'>
         <header>
            <h3>Current key:  <span>{{key}}</span></h3>
@@ -37,56 +39,43 @@
           <a class='key' href="/keys?key=Eminor">E min</a>
           <a class='key' href="/keys?key=Gminor">G Min</a>
       </div>
+      </div>
     </div class='row'>
-    <div class='one-half'>
+    </div>
       <div class='row'>
-
-        <div class='col-half'>
+        <div class='one-half'>
           <h4>Dorian Mode Keys</h4>
-      <article>
           <a class='key' href="/keys?key=Adorian">A Dorian</a>
           <a class='key' href="/keys?key=Bdorian">B Dorian</a>
           <a class='key' href="/keys?key=Cdorian">C Dorian</a>
           <a class='key' href="/keys?key=Ddorian">D Dorian</a>
-        </div>
-        <div class='one-half'>
           <a class='key' href="/keys?key=Edorian">E Dorian</a>
           <a class='key' href="/keys?key=Fdorian">F Dorian</a>
           <a class='key' href="/keys?key=Gdorian">G Dorian</a>
-            </div>
-          </div>
-          </div>
-          <div class='one-half'>
-        <div class='one-half'>
-
         </div>
+        <div class='one-half'>
           <h4> Mixolydian Mode Keys</h4>
-          <br>
           <a class='key' href="/keys?key=Amixolydian">Amixolydian</a>
           <a class='key' href="/keys?key=Bmixolydian">Bmixolydian</a>
           <a class='key' href="/keys?key=Dmixolydian">Dmixolydian</a>
-          <div class='one-half'>
-
           <a class='key' href="/keys?key=Emixolydian">Emixolydian</a>
           <a class='key' href="/keys?key=Gmixolydian">Gmixolydian</a>
-          </div>
-        </article>
-      </div>
-    </div>
       </div>
       </div>
+      <article>
 
-          </div>
-          <div class='row'>
-            <div class='two-third display'>
+      <div class='row'>
+        <div class='two-third display'>
             {{#tuneKeys}}
+
 <!--             <h3>{{key}}</h3>
- -->              <a class='name' href="/tunes?id={{id}}&name={{name}}&key={{key}}">{{name}}</a>
-            {{/tuneKeys}}
-          </div>
-          </div>
-    </section>
-<!--         </section>
  -->
+               <a class='name' href="/tunes?id={{id}}&name={{name}}&key={{key}}">{{{name}}}</a>
+            {{/tuneKeys}}
+      </article>
+      </div>
+      </div>
+    </section>
+  </main>
   </body>
 </html>

@@ -80,6 +80,9 @@ router.post('/', function(req, res, next) {
             response.body.settings[0].key = 'K: ' + response.body.settings[0].key
             response.body.settings[0].abc = response.body.settings[0].abc
 
+            response.body.settings[0].abc = response.body.settings[0].abc
+
+
             response.body.settings[0].id = response.body.id
             response.body.settings[0].name = response.body.name
             response.body.settings[0].history = response.body.history

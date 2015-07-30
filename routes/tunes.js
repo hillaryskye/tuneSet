@@ -12,7 +12,8 @@ router.get('/show', function(req, res, next) {
   tunesDb.find({}, function (err, docs) {
     if (err) throw err
     // console.log('req.session', req.body)
-    //console.log('doc from show page', docs)
+    docs
+    console.log('doc from show page', docs[0].name)
     res.render('show', {tunes: docs})
     })
   })

@@ -21,20 +21,23 @@
   	</style>
   </head>
   <body>
+    <header>
     <h3>Here are your tunes!</h3>
-<h3>Click on a 3 to 5 tunes to create a set!</h3>
+    <h3>Click on a 3 to 5 tunes to create a set!</h3>
+
+    </header>
 <main>
-<section id='tunes' class='name'>
+  <article>
   <div class='row'>
-  {{#each tunes}}
+    <div class='two-third display'>
+      {{#each tunes}}
+        <a class='name' href="">{{{this.name}}} &nbsp; {{this.type}} &nbsp; {{this.key}}</a>
+    {{/each}}
+      </div>
 <!--     <a class='name' href="/tunes?id={{id}}&name={{name}}">{{name}}{{id}}</a>      {{name}}
  -->
-      <li>{{this.name}}</li>
-      <li>{{this.type}}</li>
-      <li>{{this.key}}</li>
-    {{/each}}
     </div>
-</section>
+  </article>
 </main>
 </body>
 </html>
