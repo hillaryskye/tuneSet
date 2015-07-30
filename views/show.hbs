@@ -24,27 +24,16 @@
     <h3>Here are your tunes!</h3>
 <h3>Click on a 3 to 5 tunes to create a set!</h3>
 <main>
-<section id='tunes'>
-<div class='row'>
-  <div class=one-half>
+<section id='tunes' class='name'>
+  <div class='row'>
   {{#each tunes}}
-    <div class='notation'>
- <pre>
 <!--     <a class='name' href="/tunes?id={{id}}&name={{name}}">{{name}}{{id}}</a>      {{name}}
  -->
-   {{this.name}}
-   {{this.id}}
-<!--   {{this.history}}
-{{this.time}}
-{{this.length}}
-{{this.type}}
-{{this.key}}
-{{this.abc}} -->
-      </pre>
-     </div>
-    </div>
+      <li>{{this.name}}</li>
+      <li>{{this.type}}</li>
+      <li>{{this.key}}</li>
     {{/each}}
-
+    </div>
 </section>
 </main>
 </body>

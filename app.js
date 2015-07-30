@@ -151,6 +151,9 @@ app.use('/users', users);
 app.use('/keys', keys);
 app.use('/tunes', tunes);
 // app.use('/show', show);
+app.get('/styleguide', function(req, res){
+  res.render('styleguide');
+})
 
 // app.use(function(req, res, next) {
 //

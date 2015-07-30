@@ -21,11 +21,14 @@
   	</style>
   </head>
   <body>
-<h3>Please type in your first tune and this app will give you keys to choose from for choosing your 2nd and 3rd tunes!</h3>
+    <header>
+      <h2> Here is your first tune!</h>
+
+    </header>
 <main>
 <section id='tunes'>
 <div class='row'>
-  <a href="/keys">Pick a set</a>
+  <a href="/keys">Pick a key</a>
   <div>
   {{#tunesSessKey}}
      <p>ALIASES: {{aliases}}</p>
@@ -50,18 +53,6 @@
   {{/tunesSessKey}}
 
 </section>
-  The tunes from my database:
-<!--   {{#each tunesDb}}
- -->  <p>{{name}}</p>
-      <p>{{type}}</p>
-      <p>{{id}}<p>
-      <p>{{key}}</p>
-      <textarea name="wpTextbox1" id="wpTextbox1" cols="80" rows="25" tabindex="1" accesskey=",">
-        {{abc}}
-      </textarea>
-
-<!--   {{/each}}
-</div><!- End of row -->
 </main>
 </body>
 </html>
