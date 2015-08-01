@@ -7,11 +7,13 @@
   	<!-- <script src="bin/abcjs_basic_latest-min.js" type="text/javascript"></script> -->
   	<!-- <script src="jquery-1.11.3.min.js" type="text/javascript"></script> -->
   	<!-- <script src="plugin/abc_plugin.js" type="text/javascript"></script> -->
+    <!--  <script src='https://cdn.rawgit.com/paulrosen/abcjs/master/bin/abcjs_plugin_noraphael_nojquery_2.1-min.js' type'text/javascript'></script> -->
     <script src="https://cdn.rawgit.com/paulrosen/abcjs/master/bin/abcjs_plugin_2.1-min.js" type="text/javascript"></script>
-  	<script type="text/javascript">
+
+    <script type="text/javascript">
   		window.ABCJS.plugin.render_before = false;
   		window.ABCJS.plugin.midi_options = {program: 41};
-  		// window.ABCJS.plugin.debug = true;
+  	  window.ABCJS.plugin.debug = true;
   	</script>
 
   	<style type="text/css">
@@ -28,13 +30,13 @@
 <main>
 <section id='tunes'>
 <div class='row'>
-  <a href="/keys">Pick a key</a>
-  <div>
+<!--   <a href="/keys">Pick a key</a>
+ -->  <div>
+<!--      <p>ALIASES: {{{aliases}}}</p>
+ -->    <div class='notation'>
+<!--       <pre>
+ -->
   {{#tunesSessKey}}
-     <p>ALIASES: {{{aliases}}}</p>
-    <div class='notation'>
-      <pre>
-
       {{id}}
       {{{name}}}
       {{history}}
@@ -47,10 +49,11 @@
       {{abc}}
       {{/if}}
     {{/each}}
-      </pre>
-   </div><!-- End of div for class=notation -->
-  </div><!-- End of col-half-- >
   {{/tunesSessKey}}
+
+<!--       </pre>
+ -->   </div><!-- End of div for class=notation -->
+  </div><!-- End of col-half-- >
 
 </section>
 </main>

@@ -7,6 +7,17 @@ var temp = db.get('temp');
 var qs = require('qs');
 var mime = require('mime');
 
+getAbc = function(str) {
+
+   var re = /\|! /g
+   var abc = str.replace(/(\|!)/g , '|\n')
+  //  console.log(newAbc)
+    return abc
+}
+// router.get('/abc', function(req, res, next) {
+//   res.redirect('abc')
+// })
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   if(req.isAuthenticated()) {
@@ -47,8 +58,8 @@ router.post('/', function(req, res, next) {
       temp.insert(response.body.tunes[0], function (err, doc) {
         if (err) throw err
         var tuneOnly = doc
-        console.log('tuneOnly', tuneOnly)
-
+        console.log('tuneOnly', tuneOnly.abc)
+        // console.log('abc from insert', response.body.tunes[0].abc)
       // 2nd unirest call to session.org to get key
         var tuneUrlKey = 'https://thesession.org/tunes/' + tuneOnly.id + '?format=json'
         unirest.get(tuneUrlKey)
@@ -78,9 +89,10 @@ router.post('/', function(req, res, next) {
             response.body.length = 'L: 1/8'
             response.body.type = 'R: ' + response.body.type
             response.body.settings[0].key = 'K: ' + response.body.settings[0].key
-            response.body.settings[0].abc = response.body.settings[0].abc
-
-            response.body.settings[0].abc = response.body.settings[0].abc
+            // console.log('abc from settings', response.body.settings[0].abc)
+            // var newAbc = getAbc(response.body.settings[0].abc)
+            // console.log('abc', newAbc)
+            response.body.settings[0].abc = response.body.settings[0].abc.replace(/(\|!)/g , '|\n')
 
 
             response.body.settings[0].id = response.body.id
