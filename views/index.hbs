@@ -3,8 +3,16 @@
   <head>
     <meta charset="utf-8">
     <title>TuneSet</title>
-    <script src="/public/javascripts/abcjs_plugin.js" type="text/javascript"></script>
-  <script type="text/javascript" src='public/javascripts/client.js'></script>
+
+    <!-- <script type="text/javascript">
+      var cooleys = "X: 1\nT: Cooley's\nM: 4/4\nL: 1/8\nR: reel\nK: Edorian\n|:D2|EBBA B2 EB|B2 AB dBAG|FDAD BDAD|FDAD dAFD|!\n EBBA B2 EB|B2 AB defg|afec dBAF|DEFD E2:|! \n|:gf|eB B2 efge|eB B2 gedB|A2 FA DAFA|A2 FA defg|! eB B2 eBgB|eB B2 defg|afec dBAF|DEFD E2:|\n";
+      var cooleys2 = "X:1\nT: Cooley's\nM: 4/4\nL: 1/8\nR: reel\nK: Emin\n|:D2|EB{c}BA B2 EB|~B2 AB dBAG|FDAD BDAD|FDAD dAFD|\nEBBA B2 EB|B2 AB defg|afe^c dBAF|DEFD E2:|\n|:gf|eB B2 efge|eB B2 gedB|A2 FA DAFA|A2 FA defg|\neB B2 eBgB|eB B2 defg|afe^c dBAF|DEFD E2:|\n";
+    </script> -->
+
+  <!-- <script type="text/javascript" src='https://code.jquery.com/jquery-1.11.3.min.js'></script>
+
+    <script src="./public/javascripts/abcjs_basic_2.1-min.js" type="text/javascript"></script> -->
+  <!-- <script type="text/javascript" src='/javascripts/client.js'></script> -->
   </head>
   <body>
 <h1>{{title}}</h1>
@@ -17,37 +25,55 @@
 </form>
 <h4 id='tune-id'>
 </h4>
-<p class='notation abcrendered'>
-
-X:8
-T: Broken Pledge, The
-Z: Piano Box Version by Martin Fleischmann
-H: Created 2013-02-19 /  Last Modified 2014-12-07
+<pre class='abctext'>
+<textarea name="abc" id="abc" cols="60" rows="12">
+X: 1
+T: Cooley's
 M: 4/4
 L: 1/8
-R: Reel
-K: Ddor
-|:Beed edBA|FADA FAdA|Beed edBA|DEFA FE~E2|
- |Beed edBA|FAde fdef|~g3f edBA|FADE FE~E2:|
- |:e2ge Aece|defg adfd|e2ge BeGe|Addc defd|
- |e2ge Aece|defg adfa|gBeg fedB|ABde fafd:|
-<!-- A|dcAG ADDB|cAGF ECCE|DEFG Addc|AcGc Adfe|!
-dcAG A2dB|cAGF ECCE|DEFG Addc|AcGc ADD:||!
-A|dcAG Acde|fAdf ecAB|cAGE GAcd|ecc2 eage|!
-dcAG Acde|fAdf ecAG|F2FE FGAB|cAGE FDD:|| -->
+R: reel
+K: Emin
+|:D2|EB{c}BA B2 EB|~B2 AB dBAG|FDAD BDAD|FDAD dAFD|
+EBBA B2 EB|B2 AB defg|afe^c dBAF|DEFD E2:|
+|:gf|eB B2 efge|eB B2 gedB|A2 FA DAFA|A2 FA defg|
+eB B2 eBgB|eB B2 defg|afe^c dBAF|DEFD E2:|
+ </textarea>
+</pre>
+
+<div class='abcrendered'></div>
+
+<!-- <a href="#" onclick="ABCJS.renderAbc('notation', cooleys); return true;">Cooley's Session.org's</a> -->
+ <hr>
+<div id="midi"></div>
+<div id="warnings"></div>
+<div id="canvas"></div>
+<div id="0"></div>
+<div id="1"></div>
+<div id="2"></div>
+<div id="3"></div>
+
+<!-- <p class='notation abcrendered'>
+
+  X:198
+  T: Reel Beatrice
+  S: Trad. Arr. S. Shannon
+  Z: Piano Box Version by Martin Fleischmann
+  H: Created 2013-02-19 /  Last Modified 2014-12-07
+  M: 4/4
+  L: 1/8
+  R: reel
+  K: Amin
+  |:CC A,C E2CE | AEEA AEAB | c2Ac e2ce | aeea e4 |
+  | c'bag fedc | BddB d3^d | e2ef edcB | A4 z4,:|
+  |: A2FA BAFA | FE^DE AEE2 | E3E FEED | CDCB, CA,A,2 |
+  A2FA BAFA | FE^DE AEE2 | E3F EDCB, |1 A,2 z2 A,4:|2 A,2 z2 G4 |
+  :cG (3GGG EGce | cG (3GGG EGce |dB (3BBB GBdB | cc'ba gfed|
+  |cG (3GGG EGce|cG (3GGG EGce|dB (3BBB GBdB|1 cBcd c2 GB:|2 cBcd c2 A,B,||
+  |:"var"c3G EGcG | cGGG EGcG | B2GG DGBG | c2BA GFED |
+  C3G, G,G,CE | CG, (3G,G,G, G,2CE | D2B,B, G,B,DB, |1,2 CB,DB, C2 z2:|3 C2B,2A,4||
 </p>
+<div class='abcrendered'> -->
 
-
-
-<!-- {{#tunes}}
-  <p>
-    {{id}}
-    {{name}}
-    {{type}}
-    {{key}}
-    {{abc}}
-  </p>
-{{/tunes}} -->
     <div id="fb-root"></div>
     <script>(function(d, s, id) {
       var js, fjs = d.getElementsByTagName(s)[0];
@@ -60,11 +86,10 @@ dcAG Acde|fAdf ecAG|F2FE FGAB|cAGE FDD:|| -->
 <!-- <div class="fb-login-button" data-max-rows="1" data-size="large" data-show-faces="false" data-auto-logout-link="false">
 </div> -->
 
-<!-- <script type="text/javascript" src='https://code.jquery.com/jquery-1.11.3.min.js'></script>
-<script src="public/javascripts/abc_plugin.js" type="text/javascript"></script>
- -->	<!-- use these lines instead to debug the plugin -->
+ 	<!-- use these lines instead to debug the plugin -->
 	<!--<script src="bin/abcjs_basic_latest-min.js" type="text/javascript"></script>-->
 	<!--<script src="jquery-1.11.3.min.js" type="text/javascript"></script>-->
 	<!--<script src="plugin/abc_plugin.js" type="text/javascript"></script>-->
+
   </body>
 </html>

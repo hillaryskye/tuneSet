@@ -12,8 +12,9 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 var keys = require('./routes/keys');
 var tunes = require('./routes/tunes')
+// var basic = require('./public/javascripts/abcjs_basic_2.1-min');
 // var show = require('./routes/show');
-var client = require('./public/javascripts/client');
+// var client = require('./public/javascripts/client');
 var unirest = require('unirest');
 
 // Passport session setup.
@@ -119,9 +120,8 @@ app.get('/auth/facebook',
 //   which, in this example, will redirect the user to the home page.
 app.get('/auth/facebook/callback',
   passport.authenticate('facebook', {
-    failureRedirect: '/login' }),
-  function(req, res) {
-    res.redirect('/');
+    failureRedirect: '/login' }), function(req, res) {
+    return res.redirect('/');
   });
 
 passport.serializeUser(function(user, done) {

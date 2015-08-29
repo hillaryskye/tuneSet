@@ -31,11 +31,12 @@ router.get('/', function(req, res, next) {
   } else {
     res.render('index', {  });
   }
-  tunesDb.find({}, function (err, docs) {
-    console.log(req.params)
-    // not sure I need two res.renders
-    res.render('index', { tunesDB: docs})
-  });
+
+//   tunesDb.find({}, function (err, docs) {
+//     console.log(req.params)
+//     // not sure I need two res.renders
+//     res.render('index', { tunesDB: docs})
+//   });
 });
 
 router.post('/', function(req, res, next) {
@@ -82,24 +83,23 @@ router.post('/', function(req, res, next) {
 
             // Get dynamic fields to include their initial state
 
-            response.body.id = 'X: ' + response.body.id
-            response.body.name = 'T: ' + response.body.name
-            response.body.history = 'Z: ' + response.body.history
-            response.body.time = 'M: ' + response.body.time
-            response.body.length = 'L: 1/8'
-            response.body.type = 'R: ' + response.body.type
-            response.body.settings[0].key = 'K: ' + response.body.settings[0].key
+            response.body.id = response.body.id
+            response.body.name = response.body.name
+            // response.body.history = 'Z: ' + response.body.history
+            response.body.time = response.body.time
+            response.body.length = '1/8'
+            response.body.type = response.body.type
+            response.body.settings[0].key = response.body.settings[0].key
             // console.log('abc from settings', response.body.settings[0].abc)
             // var newAbc = getAbc(response.body.settings[0].abc)
             // console.log('abc', newAbc)
             response.body.settings[0].abc = response.body.settings[0].abc.replace(/(\|!)/g , '|\n')
 
-
             response.body.settings[0].id = response.body.id
             response.body.settings[0].name = response.body.name
             response.body.settings[0].history = response.body.history
             response.body.settings[0].time = response.body.time
-            response.body.settings[0].length = 'L: 1/8'
+            response.body.settings[0].length = '1/8'
             response.body.settings[0].type = response.body.type
 
           console.log('time', response.body.time)

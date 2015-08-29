@@ -109,7 +109,8 @@ header {
   width: 100%;
   overflow: hidden;
   overflow-x: hidden;
-  overflow-y: hidden; }
+  /*     overflow-y: hidden;
+ */ }
 
 .show {
   padding: 40px; }
@@ -174,10 +175,11 @@ key-selection:after {
 
 .abctext {
   font-size: 14px;
-  margin-left: -20px; }
+  margin-left: 20px; }
 
 .abcrendered {
-  margin-left: 40px; }
+  margin-left: 40px;
+  background-color: #FCF9BB; }
 
 input[type='submit'], button,
 html input[type="button"], input[type="reset"],
@@ -204,9 +206,6 @@ input[type='text'] {
  *    `input` and others.
  */
 .abctext {
-  margin-left: -20px; }
-
-.abcrendered {
   margin-left: 20px; }
 
 form {
