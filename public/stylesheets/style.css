@@ -178,10 +178,21 @@ key-selection:after {
 
 .abctext {
   width: 67%;
-  margin: 0 auto; }
+  margin: 0 auto;
+  /*   padding-top: 20px;
+ */ }
 
 .abcrendered {
   background-color: #FCF9BB; }
+
+.hr-1st {
+  width: 90%; }
+
+.hr-2nd {
+  width: 35%; }
+
+.msg {
+  margin-left: 123px; }
 
 input[type='submit'], button,
 html input[type="button"], input[type="reset"],
@@ -286,10 +297,15 @@ h2 {
 h3 {
   font-size: 1.563em; }
 
-h4 {
-  margin: 0;
+h4, h5 {
+  /*   margin: 0;
+ */
   font-size: 1.25em;
   text-align: center; }
+
+h5 {
+  margin: 0;
+  font-weight: normal; }
 
 small, .font_small {
   font-size: 0.8em; }
@@ -667,6 +683,8 @@ legend {
  * Remove default vertical scrollbar in IE 8/9/10/11.
  */
 textarea {
+  /*   margin-left: 60px;
+ */
   overflow: auto; }
 
 /**

@@ -48,10 +48,14 @@ h2 {
 
 h3 {font-size: 1.563em;}
 
-h4 {
-  margin: 0;
-  font-size: 1.25em;
+h4, h5 {
+/*   margin: 0;
+ */  font-size: 1.25em;
   text-align: center;
+}
+h5 {
+  margin: 0;
+  font-weight: normal;
 }
 
 small, .font_small {font-size: 0.8em;}
