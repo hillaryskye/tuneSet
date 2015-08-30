@@ -47,9 +47,20 @@ router.post('/', function(req, res, next) {
   var tuneUrl = 'https://thesession.org/tunes/search?q=' + tune + '&format=json'
   console.log('tuneUrl', tuneUrl)
 
+if (tuneUrl === undefined) {
+  console.log('alert')
+  // alert('Please enter a valid tune name!')
+}
   // Get first unirest call to session.org with tune entered by user
     unirest.get(tuneUrl)
     .end(function (response) {
+        // if (response.body.tunes[0] === undefined) {
+        // if (err) throw err
+        //    console.log('alert')
+          // throw err
+          // h5.innerHTML = 'Please enter a valid tune name!'
+          // alert('Please enter a valid tune name!')
+        // }
       console.log('response from unirest', response.body.tunes[0])
 
       _id = response.body.tunes[0]

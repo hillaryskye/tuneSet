@@ -30,16 +30,16 @@
      <p>ALIASES: {{{aliases}}}</p>
    <div class='abctext'>
  <textarea name="abc" id="abc" cols="60" rows="10">
-  X: {{id}}
-  T: {{{name}}}
-  M: {{time}}
-  L: {{length}}
-  R: {{type}}
+X: {{id}}
+T: {{{name}}}
+M: {{time}}
+L: {{length}}
+R: {{type}}
 {{#each settings}}
-  {{#if @first}}
-  K: {{key}}
-  {{abc}}
-  {{/if}}
+{{#if @first}}
+K: {{key}}
+{{abc}}
+{{/if}}
 {{/each}}
 {{/tunesSessKey}}
  </textarea>
