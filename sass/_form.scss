@@ -1,14 +1,10 @@
-.abctext {
-  margin-left: -20px;
-}
-.abcrendered {
-  margin-left: 20px;
-}
 form {
   width: 100%;
 
 }
-
+.block {
+  display: block;
+}
 textarea, input[type='text'] {
 /*   font-size: 14px;
  */
@@ -30,5 +26,9 @@ textarea {
 
 label {
   margin: 20px;
-  font-weight: bold;
+/*   font-weight: bold;
+ */}
+.select {
+  margin: 20px;
+  height: 30px;
 }

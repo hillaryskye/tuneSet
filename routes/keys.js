@@ -27,6 +27,7 @@ router.get('/', function(req, res, next) {
         // Got id from first unirest request from user's key choice
         response.body.tunes.type = reqType
         response.body.tunes.key = reqKey
+
         console.log('reqKey', reqKey)
         console.log('reqType', reqType)
         console.log('response.body.tunes.key', response.body.tunes.key)

@@ -1,6 +1,10 @@
 *, *:before, *:after {
   box-sizing: border-box;
 }
+.wrapper {
+  width: 70%;
+  margin: 0 auto;
+}
 .main {
   margin-left: 20px;
   width: 80%;
@@ -27,6 +31,9 @@ nav li:after {
   content: "";
   display: table;
   clear: both;
+}
+.center {
+  text-align: center;
 }
 .one-half {
 /*   border: 2px solid purple;

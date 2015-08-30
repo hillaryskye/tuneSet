@@ -18,15 +18,10 @@
 
   </head>
   <body>
-    <header>
-      <h2> Here is your first tune!</h>
-
-    </header>
-<main>
+<main class="wrapper">
 <section id='tunes'>
-<div class='row'>
-<a href="/keys">Pick a key</a>
-    {{#tunesSessKey}}
+<!-- <div class='row'>
+ -->    {{#tunesSessKey}}
      <p>ALIASES: {{{aliases}}}</p>
    <div class='abctext'>
  <textarea name="abc" id="abc" cols="60" rows="10">
@@ -44,13 +39,13 @@ K: {{key}}
 {{/tunesSessKey}}
  </textarea>
   </div><!-- End of div for class=notation -->
-    <div class='abcrendered'>
-    </div>
-  <div></div>
+<!--     <div class='abcrendered'>
+</div>
+ -->  <div></div>
 
   <div id="midi"></div>
   <div id="warnings"></div>
-  <div id="canvas"></div>
+  <div id="canvas" class='abcrendered'></div>
   <div id="0"></div>
   <div id="1"></div>
   <div id="2"></div>
