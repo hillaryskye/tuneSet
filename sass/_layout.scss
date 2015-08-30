@@ -1,6 +1,9 @@
 *, *:before, *:after {
   box-sizing: border-box;
 }
+html, body {
+  height: 100%;
+}
 .wrapper {
   width: 70%;
   margin: 0 auto;
@@ -34,6 +37,10 @@ nav li:after {
 }
 .center {
   text-align: center;
+}
+footer {
+  margin-bottom: -100px;
+  height: 2em;
 }
 .one-half {
 /*   border: 2px solid purple;
