@@ -26,8 +26,8 @@ p {
 }
 
 h1, h2, h3, h4 {
-  margin: 1.414em 0 0.5em;
-  font-weight: inherit;
+/*   margin: 1.414em 0 0.5em;
+ */  font-weight: inherit;
   line-height: 1.2;
 }
 
@@ -49,6 +49,7 @@ h2 {
 h3 {font-size: 1.563em;}
 
 h4 {
+  margin: 0;
   font-size: 1.25em;
   text-align: center;
 }
@@ -101,4 +102,22 @@ a {
 
 span {
   color: #482ACF;
+}
+.aliases {
+  float: left;
+  border: 1px solid black;
+  width: 20%;
+  min-height: 100px;
+  word-wrap: normal;
+  display: block;
+  font-size: .9em;
+  line-height: 1.3em;
+  padding: 10px;
+  margin: 35px;
+  margin-top: 50px;
+}
+.aliases:after {
+  content: "";
+  display: table;
+  clear: both;
 }

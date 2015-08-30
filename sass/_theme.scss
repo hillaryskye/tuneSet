@@ -39,14 +39,17 @@ visibility: hidden;
 }
 .login {
   margin-top: 20px;
-  margin-left: 40px;
+  margin-left: 20px;
   color: white;
   background: #482ACF;
   color: white;
-  padding: 10px 25px;
+  padding: 8px 20px;
   border-radius: 10px;
   border: 1px solid #000;
   transition: 300ms ease all;
+}
+.login-title {
+  margin-top: 40px;
 }
 section key-selection {
   float: left;
@@ -60,7 +63,7 @@ key-selection:after {
 }
 
 .abctext {
-  width: 71%;
+  width: 67%;
   margin: 0 auto;
 
 }

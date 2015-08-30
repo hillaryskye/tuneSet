@@ -2,12 +2,12 @@
   box-sizing: border-box; }
 
 html, body {
-  height: 100%;
-}
-  .wrapper {
-    width: 70%;
-    margin: 0 auto;
-  }
+  height: 100%; }
+
+.wrapper {
+  width: 70%;
+  margin: 0 auto; }
+
 .main {
   margin-left: 20px;
   width: 80%;
@@ -21,11 +21,8 @@ nav {
   margin: 0; }
 
 nav li, article li {
-  font-size: 0.7em;
   list-style: none;
-  padding-left: 10px;
-  margin: 0;
-}
+  font-size: .7em; }
 
 nav li:after {
   content: "";
@@ -33,8 +30,12 @@ nav li:after {
   clear: both; }
 
 .center {
-  text-align: center;
-}
+  text-align: center; }
+
+footer {
+  margin-bottom: -100px;
+  height: 2em; }
+
 .one-half {
   /*   border: 2px solid purple;
 text-align: center;
@@ -114,13 +115,6 @@ header {
   margin-top: -40px;
   text-align: center; }
 
-.notation {
-  width: 100%;
-  overflow: hidden;
-  overflow-x: hidden;
-  /*     overflow-y: hidden;
- */ }
-
 .show {
   padding: 40px; }
 
@@ -159,16 +153,19 @@ key:after {
 
 .login {
   margin-top: 20px;
-  margin-left: 40px;
+  margin-left: 20px;
   color: white;
   background: #482ACF;
   color: white;
-  padding: 10px 25px;
+  padding: 8px 20px;
   border-radius: 10px;
   border: 1px solid #000;
   transition: 300ms ease all; }
 
-section .key-selection {
+.login-title {
+  margin-top: 40px; }
+
+section key-selection {
   float: left;
   margin: 10px;
   display: block; }
@@ -178,6 +175,10 @@ key-selection:after {
   visibility: hidden;
   clear: both;
   visibility: hidden; }
+
+.abctext {
+  width: 67%;
+  margin: 0 auto; }
 
 .abcrendered {
   background-color: #FCF9BB; }
@@ -197,8 +198,7 @@ input[type="submit"] {
   /* 3 */ }
 
 input[type='text'] {
-  background: #6874E8;
-}
+  background: #6874E8; }
 
 /**
  * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
@@ -207,18 +207,12 @@ input[type='text'] {
  * 3. Improve usability and consistency of cursor style between image-type
  *    `input` and others.
  */
-.abctext {
-  width: 71%;
-  margin: 0 auto;
-}
-
 form {
   width: 100%; }
 
-.select {
-    margin: 20px;
-    height: 30px;
-  }
+.block {
+  display: block; }
+
 textarea, input[type='text'] {
   /*   font-size: 14px;
  */
@@ -236,14 +230,14 @@ textarea {
   min-height: 250px; }
 
 label {
-  margin: 20px;}
-.block {
-  display: block;
-}
-footer {
-  margin-bottom: -100px;
-  min-height: 2em;
-}
+  margin: 20px;
+  /*   font-weight: bold;
+ */ }
+
+.select {
+  margin: 20px;
+  height: 30px; }
+
 html {
   font-size: 1em; }
 
@@ -264,15 +258,15 @@ article {
   float: left;
   height: 25px; }
 
-  p {
-    font-size: 0.7em;
-    line-height: .2em;
-    margin-bottom: 1.3em;
-    padding-left: 10px;
-  }
+p {
+  font-size: 0.7em;
+  line-height: .2em;
+  margin-bottom: 1.3em;
+  padding-left: 10px; }
 
 h1, h2, h3, h4 {
-  margin: 1.414em 0 0.5em;
+  /*   margin: 1.414em 0 0.5em;
+ */
   font-weight: inherit;
   line-height: 1.2; }
 
@@ -286,12 +280,14 @@ h1 {
 h2 {
   margin: 0;
   font-size: 1.953em;
-  margin-left: 40px; }
+  /*   margin-left: 40px;
+ */ }
 
 h3 {
   font-size: 1.563em; }
 
 h4 {
+  margin: 0;
   font-size: 1.25em;
   text-align: center; }
 
@@ -335,6 +331,24 @@ a:hover {
 
 span {
   color: #482ACF; }
+
+.aliases {
+  float: left;
+  border: 1px solid black;
+  width: 20%;
+  min-height: 100px;
+  word-wrap: normal;
+  display: block;
+  font-size: .9em;
+  line-height: 1.3em;
+  padding: 10px;
+  margin: 35px;
+  margin-top: 50px; }
+
+.aliases:after {
+  content: "";
+  display: table;
+  clear: both; }
 
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
 /**
@@ -507,7 +521,6 @@ figure {
  * Address differences between Firefox and other browsers.
  */
 hr {
-  width: 33%;
   -moz-box-sizing: content-box;
   box-sizing: content-box;
   height: 0; }

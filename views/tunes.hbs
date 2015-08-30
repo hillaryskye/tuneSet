@@ -18,12 +18,15 @@
 
   </head>
   <body>
-<main class="wrapper">
+<main>
+     <h4>Here is the abc notation for your tune</h4>
 <section id='tunes'>
 <!-- <div class='row'>
  -->    {{#tunesSessKey}}
-     <p>ALIASES: {{{aliases}}}</p>
+     <p class="aliases">ALIASES: {{{aliases}}}</p>
    <div class='abctext'>
+  <br>
+     <p>Edit the abc notation if you choose and notice how the notes will be highlighted on the sheet music below in red.</p>
  <textarea name="abc" id="abc" cols="60" rows="10">
 X: {{id}}
 T: {{{name}}}
@@ -42,14 +45,17 @@ K: {{key}}
 <!--     <div class='abcrendered'>
 </div>
  -->  <div></div>
+<div class="wrapper">
 
   <div id="midi"></div>
+  <br>
   <div id="warnings"></div>
-  <div id="canvas" class='abcrendered'></div>
+  <div id="canvas" class='abcrendered wrapper'></div>
   <div id="0"></div>
   <div id="1"></div>
   <div id="2"></div>
   <div id="3"></div>
+</div>
 
 </section>
 </main>
